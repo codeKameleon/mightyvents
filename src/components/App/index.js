@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import AppRouter from '../AppRouter';
-import styles from './styles.module.css';
+import styles from './styles.module.scss';
 
 class App extends Component {
   render() {
