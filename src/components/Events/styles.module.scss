@@ -1,0 +1,28 @@
+.Events {
+  padding: 16px;
+}
+
+.events-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.event {
+  flex: 1 0 30%;
+  background-color: #eee;
+  padding: 20px;
+  margin: 5px;
+  border-bottom: 4px solid rgb(51, 53, 63);
+  color: #333;
+  text-decoration: none;
+}
+
+.time {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+.title {
+  font-weight: bold;
+}
