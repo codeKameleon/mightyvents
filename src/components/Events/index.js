@@ -1,40 +1,76 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { fetchEvents } from '../../actions/getFacebookEventsActions';
+import { fetchFacebookEvents } from '../../actions/getFacebookEventsActions';
+import { fetchMeetupEvents } from '../../actions/getMeetupEventsActions';
 import styles from './styles.module.scss';
 
 class Events extends Component {
   componentDidMount() {
-    this.props.fetchEvents();
+    this.props.fetchFacebookEvents();
+    this.props.fetchMeetupEvents();
   }
 
   render() {
-    const { events } = this.props;
+    const { facebookEvents, meetupEvents } = this.props;
 
+    console.log(meetupEvents);
     return (
       <div className={styles['Events']}>
         <h1>Events</h1>
-        {!events ? (
+
+        {/* Facebook events */}
+        {!facebookEvents ? (
           <span>Loading events ...</span>
         ) : (
-          <ul className={styles['events-list']}>
-            {events.map(event => {
-              return (
-                <Link className={styles['event']} key={event.id} to="/">
-                  <article>
-                    <div className={styles['time']}>
-                      <span>{event.start_time}</span>
+          <React.Fragment>
+            <h2> Facebook </h2>
 
-                      <span> {event.start_time}</span>
-                    </div>
+            <ul className={styles['events-list']}>
+              {facebookEvents.map(event => {
+                return (
+                  <Link className={styles['event']} key={event.id} to="/">
+                    <article>
+                      <div className={styles['time']}>
+                        <span>{event.start_time}</span>
 
-                    <h2 className={styles['title']}>{event.name}</h2>
-                  </article>
-                </Link>
-              );
-            })}
-          </ul>
+                        <span> {event.start_time}</span>
+                      </div>
+
+                      <h2 className={styles['title']}>{event.name}</h2>
+                    </article>
+                  </Link>
+                );
+              })}
+            </ul>
+          </React.Fragment>
+        )}
+
+        {/* Meetup events */}
+        {!meetupEvents ? (
+          <span>Loading events ...</span>
+        ) : (
+          <React.Fragment>
+            <h2> Meetup </h2>
+
+            <ul className={styles['events-list']}>
+              {meetupEvents.map(event => {
+                return (
+                  <Link className={styles['event']} key={event.id} to="/">
+                    <article>
+                      <div className={styles['time']}>
+                        <span>{event.local_date}</span>
+
+                        <span> {event.local_time}</span>
+                      </div>
+
+                      <h2 className={styles['title']}>{event.name}</h2>
+                    </article>
+                  </Link>
+                );
+              })}
+            </ul>
+          </React.Fragment>
         )}
       </div>
     );
@@ -43,10 +79,11 @@ class Events extends Component {
 
 //TO DO : concat fb & meetup events
 const mapStateToProps = state => ({
-  events: state.events.itemsFacebook
+  facebookEvents: state.events.itemsFacebook,
+  meetupEvents: state.events.itemsMeetup
 });
 
 export default connect(
   mapStateToProps,
-  { fetchEvents }
+  { fetchFacebookEvents, fetchMeetupEvents }
 )(Events);

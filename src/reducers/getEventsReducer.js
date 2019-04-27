@@ -1,13 +1,13 @@
-import { FECTH_EVENTS_FACEBOOK } from '../actions/types';
+import { FETCH_EVENTS_FACEBOOK, FETCH_EVENTS_MEETUP } from '../actions/types';
 
 const initialState = {
-  itemsFacebook: []
+  itemsFacebook: [],
+  itemsMeetup: []
 };
 
 export default function(state = initialState, action) {
   switch (action.type) {
-    // fetch events facebook
-    case FECTH_EVENTS_FACEBOOK:
+    case FETCH_EVENTS_FACEBOOK:
       return {
         ...state,
         itemsFacebook: action.payload.map(item => {
@@ -15,7 +15,14 @@ export default function(state = initialState, action) {
           return item;
         })
       };
-    // TO DO : fetch events meetup
+    case FETCH_EVENTS_MEETUP:
+      return {
+        ...state,
+        itemsMeetup: action.payload.map(item => {
+          item.serviceProvider = 'MU';
+          return item;
+        })
+      };
     default:
       return state;
   }
