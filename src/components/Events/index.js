@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { fetchFacebookEvents } from '../../actions/getFacebookEventsActions';
 import { fetchMeetupEvents } from '../../actions/getMeetupEventsActions';
+import moment from 'moment';
 import styles from './styles.module.scss';
 
 class Events extends Component {
@@ -13,7 +14,7 @@ class Events extends Component {
 
   render() {
     const { facebookEvents, meetupEvents } = this.props;
-
+    console.log(facebookEvents);
     console.log(meetupEvents);
     return (
       <div className={styles['Events']}>
@@ -32,9 +33,9 @@ class Events extends Component {
                   <Link className={styles['event']} key={event.id} to="/">
                     <article>
                       <div className={styles['time']}>
-                        <span>{event.start_time}</span>
+                        <span>{moment(event.start_time).format('DD MMM')}</span>
 
-                        <span> {event.start_time}</span>
+                        <span>{moment(event.start_time).format('HH:mm')}</span>
                       </div>
 
                       <h2 className={styles['title']}>{event.name}</h2>
@@ -59,9 +60,9 @@ class Events extends Component {
                   <Link className={styles['event']} key={event.id} to="/">
                     <article>
                       <div className={styles['time']}>
-                        <span>{event.local_date}</span>
+                        <span>{moment(event.local_date).format('DD MMM')}</span>
 
-                        <span> {event.local_time}</span>
+                        <span>{moment(event.time).format('HH:mm')}</span>
                       </div>
 
                       <h2 className={styles['title']}>{event.name}</h2>
