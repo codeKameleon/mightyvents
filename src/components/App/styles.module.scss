@@ -1,3 +1,13 @@
+@import '../../styles/variables';
+
+* {
+  box-sizing: border-box;
+}
+
 .App {
+  background-color: $greyLight;
+  color: $greyDark;
+  font-family: $fontSecondary;
+  font-size: 16px;
   text-align: center;
 }
