@@ -1,0 +1,57 @@
+@import '../../styles/variables';
+
+.wrapper {
+  display: flex;
+  height: 100vh;
+}
+
+.sign {
+  flex: 1 0 30%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: $primary;
+  color: $white;
+}
+
+.background {
+  flex: 1 0 70%;
+}
+
+.header {
+  margin: 30px 0;
+}
+
+.title {
+  margin: 0;
+  font-family: $fontPrimary;
+  font-size: 3rem;
+  text-transform: uppercase;
+}
+
+.btn-login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  height: 40px;
+  margin: 10px 0;
+  border-radius: 4px;
+  color: $white;
+  text-decoration: none;
+
+  &:first-of-type {
+    background-color: $facebook;
+  }
+
+  &:last-of-type {
+    background-color: $meetup;
+  }
+}
+
+.background {
+  height: 100vh;
+  background: url('../../img/mightyvents.jpg') center center / cover no-repeat;
+}

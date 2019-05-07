@@ -1,6 +1,12 @@
+@import '../../styles/variables';
+
 .Header {
-  padding: 16px;
-  background-color: #e9eef7;
+  position: fixed;
+  width: 100%;
+  z-index: $zIndexHeader;
+  padding: 24px;
+  background-color: $primary;
+  border-bottom: 4px solid #3190b6;
 }
 
 .nav {
@@ -22,26 +28,10 @@
   padding: 0 4px;
 }
 
-.home-link,
-.nav-link {
-  color: #333;
-  text-decoration: none;
-}
-
-.home-link {
-  font-size: 0.85rem;
-  font-weight: bold;
-  text-transform: uppercase;
-}
-
 .nav-link {
   margin: 0 4px;
-
-  &:hover {
-    color: #437feb;
-  }
-}
-
-.nav-link-active {
-  color: #437feb;
+  color: #fff;
+  font-family: $fontPrimary;
+  text-decoration: none;
+  text-transform: uppercase;
 }

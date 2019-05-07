@@ -1,28 +1,101 @@
+@import '../../styles/variables';
+
 .Events {
-  padding: 16px;
+  padding: 60px 16px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.main-title {
+  position: relative;
+  padding: 30px 0;
+  font-family: $fontPrimary;
+  text-transform: uppercase;
+
+  &::after {
+    content: '';
+    position: absolute;
+    width: 5%;
+    height: 5px;
+    background-color: #37b7cb;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
 }
 
 .events-list {
   display: flex;
   flex-wrap: wrap;
+  list-style-type: none;
 }
 
 .event {
-  flex: 1 0 30%;
-  background-color: #eee;
+  position: relative;
+  flex: 1 1 100%;
+  margin: 15px;
+  border-bottom: 4px solid $greyDark;
+  background-color: $white;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: $primary;
+    transform: translateX(-100%);
+    transition: all 200ms ease-in-out;
+  }
+
+  @media screen and (min-width: $tablet) {
+    flex: 1 0 30%;
+  }
+
+  @media screen and (min-width: $desktop) {
+    flex: 0 0 30%;
+
+    &:hover::before {
+      transform: translateX(0);
+    }
+
+    &:hover .title,
+    &:hover .day,
+    &:hover .time {
+      position: relative;
+      z-index: $zIndexContent;
+      color: $white;
+    }
+  }
+}
+
+.event-link {
+  position: relative;
+  z-index: $zIndexContent;
+  display: block;
+  height: 100%;
+  width: 100%;
   padding: 20px;
-  margin: 5px;
-  border-bottom: 4px solid rgb(51, 53, 63);
-  color: #333;
+  color: $greyDark;
   text-decoration: none;
 }
 
-.time {
+.date {
   display: flex;
   justify-content: space-between;
   margin-bottom: 30px;
+  text-transform: uppercase;
+}
+
+.day {
+  color: $primary;
+  font-weight: bold;
 }
 
 .title {
+  color: $secondary;
   font-weight: bold;
 }
