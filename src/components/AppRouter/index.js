@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import Header from '../Header';
 import Events from '../Events';
-import Setup from '../Setup';
+import Login from '../Login';
 
 export default class AppRouter extends Component {
   render() {
@@ -11,9 +11,9 @@ export default class AppRouter extends Component {
         <Header />
 
         <Switch>
-          <Route exact path="/" component={Events} />
-          <Route path="/setup" component={Setup} />
-          <Redirect from="/events" to="/" />
+          <Route exact path="/" component={Login} />
+          <Route path="/events" component={Events} />
+          <Redirect from="/login" to="/" />
         </Switch>
       </BrowserRouter>
     );
